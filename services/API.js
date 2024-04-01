@@ -1,6 +1,6 @@
 const API = {
   url: '/data/menu.json',
-  fetchMenu: async () => {
+  fetchMenu: async function () {
     try {
       const response = await fetch(this.url);
       return await response.json();
