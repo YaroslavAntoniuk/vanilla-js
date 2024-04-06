@@ -8,6 +8,8 @@ const Router = {
 
         Router.go(route);
       });
+
+      Router.go(location.pathname);
     });
 
     // Event handler for url changes
@@ -28,7 +30,6 @@ const Router = {
       case '/':
         pageElement = document.createElement('menu-page');
         break;
-
       case '/order':
         pageElement = document.createElement('order-page');
         break;
@@ -36,17 +37,18 @@ const Router = {
         if (route.startsWith('/product/')) {
           pageElement = document.createElement('details-page');
           const paramId = route.substring(route.lastIndexOf('/') + 1);
-          pageElement.dataset.id = paramId;
+          pageElement.dataset.productId = paramId;
         }
+        break;
     }
 
-    if (!pageElement) return;
-
-    const main = document.querySelector('main');
-    main.children[0]?.remove();
-    main.appendChild(pageElement);
-    window.scrollX = 0;
-    window.scrollY = 0;
+    if (pageElement) {
+      const cache = document.querySelector('main');
+      cache.innerHTML = '';
+      cache.appendChild(pageElement);
+      window.scrollX = 0;
+      window.scrollY = 0;
+    }
   },
 };
 
