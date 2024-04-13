@@ -34,7 +34,6 @@ export class DetailsPage extends HTMLElement {
 
       this.root.querySelector('button').addEventListener('click', () => {
         addToCart(this.product.id);
-        app.router.go('/order');
       });
     } else {
       alert('Invalid product ID');
