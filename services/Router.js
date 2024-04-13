@@ -8,13 +8,11 @@ const Router = {
 
         Router.go(route);
       });
-
-      Router.go(location.pathname);
     });
 
     // Event handler for url changes
     window.addEventListener('popstate', (event) => {
-      Router.go(event.state.route, false);
+      Router.go(event.state?.route, false);
     });
 
     // Check the initial URL
