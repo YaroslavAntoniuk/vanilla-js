@@ -32,7 +32,7 @@ const Router = {
         pageElement = document.createElement('order-page');
         break;
       default:
-        if (route.startsWith('/product/')) {
+        if (route?.startsWith('/product/')) {
           pageElement = document.createElement('details-page');
           const paramId = route.substring(route.lastIndexOf('/') + 1);
           pageElement.dataset.productId = paramId;
@@ -46,6 +46,10 @@ const Router = {
       cache.appendChild(pageElement);
       window.scrollX = 0;
       window.scrollY = 0;
+    } else {
+      // Show 404 page
+      const cache = document.querySelector('main');
+      cache.innerHTML = '<h1>404 - Page not found</h1>';
     }
   },
 };
